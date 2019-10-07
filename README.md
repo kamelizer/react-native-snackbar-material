@@ -2,16 +2,11 @@
 
 React Native Snackbar with reddit-like style
 
-![Success](https://user-images.githubusercontent.com/11463030/55329083-7538e000-5496-11e9-8cc6-8c6df0209ac1.png)
-![Error](https://user-images.githubusercontent.com/11463030/55329110-8124a200-5496-11e9-8346-96023577380f.png)
-![Warning](https://user-images.githubusercontent.com/11463030/55329112-81bd3880-5496-11e9-90e7-1247bf7c5c5e.png)
-![Info](https://user-images.githubusercontent.com/11463030/55329113-8255cf00-5496-11e9-9b4a-d085c46532b1.png)
-![With Action](https://user-images.githubusercontent.com/11463030/55329115-8255cf00-5496-11e9-8ba1-74a0b6d022c5.png)
-![Dark Theme](https://user-images.githubusercontent.com/11463030/55329114-8255cf00-5496-11e9-9be8-0e258b0bd276.png)
+![Common](https://user-images.githubusercontent.com/11463030/66312923-22932180-e91a-11e9-881e-da7b89d84fa8.gif)
 
 ## Installation
 
-`$ npm install react-native-snackbar-reddit --save`
+`$ npm install react-native-snackbar-material --save`
 
 ## Usage
 
@@ -31,13 +26,21 @@ export default class App extends Component {
 }
 ```
 
-Now you can use Snackbar inside any component of SnackProvider.  
+Now you can use Snackbar inside any component of SnackProvider. 
+Default method is Snackbar.show() - Without any border, default material snackbar.
 There are 4 types of snackbar with different border colors: `Snackbar.info()`, `Snackbar.error()`, `Snackbar.success()`, `Snackbar.warning()`
 
 ```js
 import { Snackbar } from "react-native-snackbar-reddit";
 
 export default class ExampleComponent extends Component {
+
+ handleDefaultSnackbar = () => {
+    Snackbar.show({
+      content: "Info Snackbar Content"
+    });
+  };
+  
   handleInfoSnackbar = () => {
     Snackbar.info({
       content: "Info Snackbar Content"
@@ -53,8 +56,9 @@ export default class ExampleComponent extends Component {
         label: "Action"
       },
       onClose: () => console.warn("Snackbar close"),
-      darkTheme: true,
-      aboveTabBar: true
+      theme: 'light',
+      margin: 52,
+      position: 'top',
     });
   };
 
@@ -103,13 +107,12 @@ Content is required prop, every other prop is optional
 | **`onClose`**         | A callback function Triggered when the Snackbar is closed    | `() => {}` |
 | **`actionTextColor`** | Custom action button text color                              | `#757575`  |
 | **`contentStyle`**    | Style object for snackbar text styling                       | `{}`       |
-| **`aboveTabBar`**     | Sets Snackbar appearance above tab bar                       | `false`    |
-| **`tabBarHeight`**    | TabBar Height in px. Works only when aboveTabBar set to true | `56`       |
+| **`margin`**          | Margin from top or bottom (depends on position of snackbar)  | `0`       |
+| **`borderWidth`**     | Snackbar border width                                        | `0`        |
 | **`borderColor`**     | Custom border color                                          |            |
-| **`position`**        | Snackbar position. Values are "top" and "bottom"             | `bottom`   |
-| **`disableBorder`**   | Prop for disabling border on Snackbar                        | `false`    |
-| **`borderWidth`**     | Snackbar border width                                        | `5`        |
+| **`position`**        | Snackbar position. Values are "top" or "bottom"             | `bottom`   |
+| **`theme`**   | Theme of snackbar for fast customisation. Values is "default" or "light"                        | `default`    |
 
 ## License
 
-[MIT License](http://opensource.org/licenses/mit-license.html). © Alexander Bogdanov 2019-
+[MIT License](http://opensource.org/licenses/mit-license.html). © Alexander Bogdanov 2019
