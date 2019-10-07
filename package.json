@@ -1,0 +1,36 @@
+{
+  "author": {
+    "name": "tmmgn"
+  },
+  "browserslist": [
+    "last 1 major version",
+    "> 1%"
+  ],
+  "bugs": {
+    "url": "https://github.com/tmmgn/react-native-snackbar-material/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "React Native Material Snackbar",
+  "homepage": "https://github.com/tmmgn/react-native-snackbar-material",
+  "keywords": [
+    "react-native",
+    "component",
+    "ios",
+    "android",
+    "material",
+    "snackbar",
+    "toast"
+  ],
+  "license": "MIT",
+  "name": "react-native-snackbar-material",
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-native": ">=0.61.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmmgn/react-native-snackbar-material.git"
+  },
+  "version": "0.0.1"
+}
