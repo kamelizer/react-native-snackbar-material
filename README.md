@@ -1,6 +1,6 @@
-# React Native Snackbar Reddit
+# React Native Snackbar Material
 
-React Native Snackbar with reddit-like style
+React Native Snackbar build with Material Guidelines.
 
 <img src="https://user-images.githubusercontent.com/11463030/66312923-22932180-e91a-11e9-881e-da7b89d84fa8.gif" width="300" alt="Common">
 
