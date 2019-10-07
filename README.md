@@ -103,10 +103,7 @@ Content is required prop, every other prop is optional
 | --------------------- | ------------------------------------------------------------ | ---------- |
 | **`content`**         | Content of Snackbar. Required                                | _None_     |
 | **`duration`**        | Delay time to cloase Snackbar in seconds                     | `4`        |
-| **`action`**          | Sets action for snackbar ( action: {
-        onPress: () => {},
-        label: "Some button label"
-      })                                     | `{}`       |
+| **`action`**          | Sets action for snackbar ( action: { onPress: () => {}, label: "Some button label" })         | `{}`       |
 | **`onClose`**         | A callback function Triggered when the Snackbar is closed    | `() => {}` |
 | **`actionTextColor`** | Custom action button text color                              | `#757575`  |
 | **`contentStyle`**    | Style object for snackbar text styling                       | `{}`       |
