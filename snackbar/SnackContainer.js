@@ -173,19 +173,35 @@ class Snackbar extends Component {
               },
               style,
             ]}>
-            <Text
-              style={[
-                styles.content,
-                contentStyle,
-                {
-                  color:
-                    theme === 'light'
-                      ? 'rgba(0,0,0,0.87)'
-                      : 'rgba(255,255,255, 0.87)',
-                },
-              ]}>
-              {content}
-            </Text>
+            {typeof content === 'string' ? (
+              <Text
+                style={[
+                  styles.content,
+                  contentStyle,
+                  {
+                    color:
+                      theme === 'light'
+                        ? 'rgba(0,0,0,0.87)'
+                        : 'rgba(255,255,255, 0.87)',
+                  },
+                ]}>
+                {content}
+              </Text>
+            ) : (
+              <View
+                style={[
+                  styles.content,
+                  contentStyle,
+                  {
+                    color:
+                      theme === 'light'
+                        ? 'rgba(0,0,0,0.87)'
+                        : 'rgba(255,255,255, 0.87)',
+                  },
+                ]}>
+                {content}
+              </View>
+            )}
             {action ? (
               <TouchableOpacity
                 onPress={this._handleOnPress}
