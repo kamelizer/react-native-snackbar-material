@@ -13,7 +13,7 @@ React Native Snackbar build with Material Guidelines.
 Inside your main app.js file define a snackbar provider
 
 ```js
-import { SnackProvider } from 'react-native-snackbar-reddit';
+import { SnackProvider } from 'react-native-snackbar-material';
 
 export default class App extends Component {
   render() {
@@ -31,7 +31,7 @@ Default method is Snackbar.show() - Without any border, default material snackba
 There are 4 types of snackbar with different border colors: `Snackbar.info()`, `Snackbar.error()`, `Snackbar.success()`, `Snackbar.warning()`
 
 ```js
-import { Snackbar } from "react-native-snackbar-reddit";
+import { Snackbar } from "react-native-snackbar-material";
 
 export default class ExampleComponent extends Component {
 
