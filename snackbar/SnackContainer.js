@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Animated,
@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   Text,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const DURATION_SHORT = 4;
 const DURATION_MEDIUM = 7;
@@ -21,11 +22,11 @@ class Snackbar extends Component {
     duration: DURATION_SHORT,
     onClose: () => {},
     style: {},
-    type: 'default',
+    type: "default",
     borderColor: null,
     actionTextColor: null,
     contentStyle: {},
-    position: 'bottom',
+    position: "bottom",
     borderWidth: 4,
     margin: 0,
   };
@@ -73,9 +74,9 @@ class Snackbar extends Component {
         duration: 200,
         useNativeDriver: true,
       }),
-    ]).start(({finished}) => {
+    ]).start(({ finished }) => {
       if (finished) {
-        const {duration} = this.props;
+        const { duration } = this.props;
         const isInfinity =
           duration === Number.POSITIVE_INFINITY ||
           duration === Number.NEGATIVE_INFINITY;
@@ -88,7 +89,7 @@ class Snackbar extends Component {
   };
 
   _hide = () => {
-    const {onClose, onAnimationEnd} = this.props;
+    const { onClose, onAnimationEnd } = this.props;
     if (this._hideTimeout) {
       clearTimeout(this._hideTimeout);
     }
@@ -97,9 +98,9 @@ class Snackbar extends Component {
       toValue: 0,
       duration: 100,
       useNativeDriver: true,
-    }).start(({finished}) => {
+    }).start(({ finished }) => {
       if (finished) {
-        this.setState({snackVisible: false});
+        this.setState({ snackVisible: false });
       }
       if (onAnimationEnd) {
         onAnimationEnd();
@@ -134,22 +135,23 @@ class Snackbar extends Component {
     } = this.props;
     const typeBorderColor = borderColor
       ? borderColor
-      : type === 'info'
-      ? '#1890ff'
-      : type === 'success'
-      ? '#4CAF50'
-      : type === 'error'
-      ? '#f5222d'
-      : type === 'warning'
-      ? '#faad14'
-      : 'transparent';
+      : type === "info"
+      ? "#1890ff"
+      : type === "success"
+      ? "#4CAF50"
+      : type === "error"
+      ? "#f5222d"
+      : type === "warning"
+      ? "#faad14"
+      : "transparent";
 
-    const typeBorderWidth = type === 'default' ? 0 : borderWidth;
+    const typeBorderWidth = 0;
 
     return (
       <SafeAreaView
         pointerEvents="box-none"
-        style={[styles.wrapper, {[position]: margin ? margin : 0}]}>
+        style={[styles.wrapper, { [position]: margin ? margin : 0 }]}
+      >
         <Animated.View
           pointerEvents="box-none"
           accessibilityLiveRegion="polite"
@@ -160,31 +162,39 @@ class Snackbar extends Component {
                 scale: this.state.transform,
               },
             ],
-          }}>
+          }}
+        >
           <View
             pointerEvents="box-none"
             style={[
               styles.container,
               {
-                backgroundColor: theme === 'light' ? '#ffffff' : '#212121',
+                backgroundColor: "#868686",
                 borderRadius: 4,
                 borderLeftColor: typeBorderColor,
                 borderLeftWidth: typeBorderWidth,
               },
               style,
-            ]}>
-            {typeof content === 'string' ? (
+            ]}
+          >
+            <Icon
+              name={type === 'error' ? "cloud-off-outline" : "cloud-check"}
+              size={24}
+              color={"white"}
+            />
+            {typeof content === "string" ? (
               <Text
                 style={[
                   styles.content,
                   contentStyle,
                   {
                     color:
-                      theme === 'light'
-                        ? 'rgba(0,0,0,0.87)'
-                        : 'rgba(255,255,255, 0.87)',
+                      theme === "light"
+                        ? "rgba(0,0,0,0.87)"
+                        : "rgba(255,255,255, 0.87)",
                   },
-                ]}>
+                ]}
+              >
                 {content}
               </Text>
             ) : (
@@ -194,11 +204,12 @@ class Snackbar extends Component {
                   contentStyle,
                   {
                     color:
-                      theme === 'light'
-                        ? 'rgba(0,0,0,0.87)'
-                        : 'rgba(255,255,255, 0.87)',
+                      theme === "light"
+                        ? "rgba(0,0,0,0.87)"
+                        : "rgba(255,255,255, 0.87)",
                   },
-                ]}>
+                ]}
+              >
                 {content}
               </View>
             )}
@@ -207,15 +218,17 @@ class Snackbar extends Component {
                 onPress={this._handleOnPress}
                 style={styles.button}
                 compact
-                mode="text">
+                mode="text"
+              >
                 <Text
                   style={{
                     color: actionTextColor
                       ? actionTextColor
-                      : theme === 'light'
-                      ? 'rgba(0,0,0,0.87)'
-                      : 'rgba(255,255,255, 0.87)',
-                  }}>
+                      : theme === "light"
+                      ? "rgba(0,0,0,0.87)"
+                      : "rgba(255,255,255, 0.87)",
+                  }}
+                >
                   {action.label.toUpperCase()}
                 </Text>
               </TouchableOpacity>
@@ -229,17 +242,17 @@ class Snackbar extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    position: 'absolute',
-    width: '100%',
+    position: "absolute",
+    width: "100%",
     maxWidth: 420,
   },
   container: {
     elevation: 2,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    paddingLeft: 20,
+    alignItems: "center",
     margin: 8,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -249,16 +262,16 @@ const styles = StyleSheet.create({
     minHeight: 48,
   },
   content: {
-    marginHorizontal: 16,
+    fontSize: 18,
     marginVertical: 8,
-    flexWrap: 'wrap',
-    flex: 1,
+    paddingLeft: 10,
+    fontFamily: "DINCondensed-Bold",
   },
   button: {
     minWidth: 36,
     minHeight: 36,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 8,
     marginHorizontal: 8,
     marginVertical: 6,
